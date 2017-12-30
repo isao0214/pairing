@@ -19,6 +19,11 @@ class CreatePollsTable extends Migration
             $table->integer('status')->comment('状態');
             $table->dateTime('deleted_at')->nullable()->comment('削除日時');
             $table->nullableTimestamps();
+
+            $table->unique(['user_id', 'party_id'], 'UNIQUE');
+            $table->index('user_id');
+            $table->index('party_id');
+            $table->index('group');
         });
     }
 
