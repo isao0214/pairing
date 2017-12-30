@@ -10,8 +10,12 @@ use Illuminate\Database\Eloquent\Model;
 class Party extends Authenticatable
 {
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'random_id',
+        'user_id',
+        'title',
+        'description',
+        'status',
+        'start_at',
+        'deleted_at',
     ];
 }
