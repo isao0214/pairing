@@ -11,4 +11,5 @@ Route::group(['prefix' => 'parties'], function()
     Route::get('/{random_id}/edit', 'PartiesController@edit');
     Route::patch('/{random_id}', 'PartiesController@update');
     Route::delete('/{random_id}', 'PartiesController@destroy');
+    Route::post('/', 'PartiesController@store');
 });

@@ -18,4 +18,10 @@ class Party extends Authenticatable
         'start_at',
         'deleted_at',
     ];
+
+    public function setRandomId()
+    {
+        $rundomId = md5(uniqid(rand(),1));
+        $this->random_id = $rundomId;
+    }
 }

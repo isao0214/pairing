@@ -24,4 +24,15 @@ class PartiesController extends Controller
     {
         return view('parties.create');
     }
+
+    public function store (Request $request)
+    {
+        $userId = 1; // ToDo： ログイン情報から取得する
+        $party = new Party;
+        $party = $party->fill($request->party);
+        $party->user_id = $userId;
+        $party->setRandomId();
+        $party->save();
+        return view('parties.create');
+    }
 }
