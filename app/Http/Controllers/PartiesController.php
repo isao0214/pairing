@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Party;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Party;
 
 class PartiesController extends Controller
 {
@@ -22,17 +23,14 @@ class PartiesController extends Controller
 
     public function create (Request $request)
     {
-        return view('parties.create');
+        $res['users'] = User::all();
+        return view('parties.create', $res);
     }
 
     public function store (Request $request)
     {
-        $user = Auth::user();
-        $party = new Party;
-        $party = $party->fill($request->party);
-        $party->user_id = $user->id;
-        $party->setRandomId();
-        $party->save();
-        return view('parties.create');
+        $res['users'] = User::all();
+        $party = Party::create($request->party);
+        return view('parties.create', $res);
     }
 }
