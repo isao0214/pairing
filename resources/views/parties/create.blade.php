@@ -4,19 +4,22 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">create</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+            {!! Form::open(['url' => "/parties", 'method' => 'post', 'name' => 'parties_store']) !!}
+                <input type="text" name="party[title]" placeholder='タイトルを入力してください' required>
+                <br>
+                <textarea name="party[description]" placeholder='詳細を入力してください' required></textarea>
+                <br>
+                <select name="party[status]" required>
+                    {{-- ToDo: 定数から取得するようにする --}}
+                    <option value="0">削除</option>
+                    <option value="1" selected>公開</option>
+                    <option value="2">下書き</option>
+                </select>
+                <br>
+                <input type="datetime-local" name="party[start_at]">
+                <br>
+                <a href="javascript:parties_store.submit()">送信</a>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
