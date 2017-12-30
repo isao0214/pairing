@@ -8,7 +8,7 @@ class CreatePartiesTable extends Migration
 {
     public function up()
     {
-        Schema::create('party', function (Blueprint $table) {
+        Schema::create('parties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('random_id', 255)->comment('乱数id');
             $table->integer('user_id')->comment('ユーザーid(主催者)');
@@ -27,6 +27,6 @@ class CreatePartiesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('party');
+        Schema::dropIfExists('parties');
     }
 }
