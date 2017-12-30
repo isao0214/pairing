@@ -13,4 +13,15 @@ class PartiesController extends Controller
         $this->middleware('auth');
         parent::__construct();
     }
+
+    public function show (Request $request, $random_id)
+    {
+        $party = Party::where('random_id', $random_id);
+        return view('parties.show');
+    }
+
+    public function create (Request $request)
+    {
+        return view('parties.create');
+    }
 }
