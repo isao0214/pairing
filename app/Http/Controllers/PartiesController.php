@@ -27,10 +27,10 @@ class PartiesController extends Controller
 
     public function store (Request $request)
     {
-        $userId = 1; // ToDo： ログイン情報から取得する
+        $user = Auth::user();
         $party = new Party;
         $party = $party->fill($request->party);
-        $party->user_id = $userId;
+        $party->user_id = $user->id;
         $party->setRandomId();
         $party->save();
         return view('parties.create');
