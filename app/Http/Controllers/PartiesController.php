@@ -23,14 +23,14 @@ class PartiesController extends Controller
 
     public function create (Request $request)
     {
-        $res['users'] = User::all();
+        $res['studentUsers'] = User::where('role', 'student')->get();
+        $res['employeeUsers'] = User::where('role', 'employee')->get();
         return view('parties.create', $res);
     }
 
     public function store (Request $request)
     {
-        $res['users'] = User::all();
-        $party = Party::create($request->party);
-        return view('parties.create', $res);
+        Party::andPollsCreate($request);
+        return view('home');
     }
 }
