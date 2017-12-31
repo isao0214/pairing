@@ -2,11 +2,13 @@
 
 namespace App;
 
+use App\Poll;
 use App\Traits\PartyObservable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Party extends Authenticatable
 {
@@ -21,6 +23,20 @@ class Party extends Authenticatable
         'start_at',
         'deleted_at',
     ];
+
+    public static function andPollsCreate ($params)
+    {
+        DB::beginTransaction();
+        try {
+            $party = self::create($params->party);
+            foreach ($params->userIds as $userId) {
+                Poll::create(['user_id' => $userId, 'party_id' => $party->id]);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
+    }
 
     public function setRandomId()
     {
