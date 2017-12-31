@@ -17,8 +17,13 @@ class PartiesController extends Controller
 
     public function show (Request $request, $random_id)
     {
-        $party = Party::where('random_id', $random_id);
-        return view('parties.show');
+        $res['party'] = Party::where('random_id', $random_id)->first();
+
+        if ($res['party']) {
+            return view('parties.show', $res);
+        } else {
+            return view('home');
+        }
     }
 
     public function create (Request $request)
