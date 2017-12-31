@@ -18,6 +18,24 @@
                 <br>
                 <input type="datetime-local" name="party[start_at]">
                 <br>
+                <p>学生</p>
+                @foreach(range(1, 3) as $i)
+                    <select name="userIds[]" required>
+                        @foreach($studentUsers as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                @endforeach
+                <br>
+                <p>企業</p>
+                @foreach(range(1, 3) as $i)
+                    <select name="userIds[]" required>
+                        @foreach($employeeUsers as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                @endforeach
+                <br>
                 <a href="javascript:parties_store.submit()">送信</a>
             {!! Form::close() !!}
         </div>
