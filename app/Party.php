@@ -49,4 +49,18 @@ class Party extends Authenticatable
         $user = Auth::user();
         $this->user_id = $user->id;
     }
+
+    public function displayStatus()
+    {
+        // ToDo: 定数から論理名を返す
+        $displayStatus = $this->status;
+        return $displayStatus;
+    }
+
+    public function displayStartAt()
+    {
+        // ToDo: Carbonでフォーマットした日時を返す
+        $displayStartAt = $this->start_at;
+        return $displayStartAt;
+    }
 }
