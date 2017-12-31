@@ -4,19 +4,31 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">show</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+            <table border="1">
+                <tr>
+                    <td>ID</td>
+                    <td>{{ $party->id }}</td>
+                </tr>
+                <tr>
+                    <td>タイトル</td>
+                    <td>{{ $party->title }}</td>
+                </tr>
+                <tr>
+                    <td>詳細</td>
+                    <td>{{ $party->description }}</td>
+                </tr>
+                <tr>
+                    <td>ステータス</td>
+                    <td>{{ $party->displayStatus() }}</td>
+                </tr>
+                <tr>
+                    <td>開始日時</td>
+                    <td>{{ $party->displayStartAt() }}</td>
+                </tr>
+            </table>
+            <br>
+            <td><a href="parties/{{ $party->random_id }}/edit"><button>編集</button></a></td>
+            <td><a href="{{ $_SERVER['HTTP_REFERER'] }}"><button>戻る</button></a></td>
         </div>
     </div>
 </div>
