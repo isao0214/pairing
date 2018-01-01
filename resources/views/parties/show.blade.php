@@ -28,7 +28,7 @@
             </table>
             <br>
             <td><a href="parties/{{ $party->random_id }}/edit"><button>編集</button></a></td>
-            <td><a href="{{ $_SERVER['HTTP_REFERER'] }}"><button>戻る</button></a></td>
+            <td><a href="home"><button>戻る</button></a></td>
         </div>
     </div>
 </div>
