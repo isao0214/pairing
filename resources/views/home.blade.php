@@ -17,7 +17,7 @@
                     <th></th>
                     <th></th>
                 </tr>
-                    @forelse ($parties as $party)
+                    @forelse($parties as $party)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $party->id }}</td>
