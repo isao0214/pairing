@@ -24,6 +24,11 @@ class Party extends Authenticatable
         'deleted_at',
     ];
 
+    public function polls()
+    {
+        return $this->hasMany('App\Poll');
+    }
+
     public static function andPollsCreate ($params)
     {
         DB::beginTransaction();
